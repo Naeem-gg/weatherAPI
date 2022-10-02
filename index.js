@@ -11,9 +11,10 @@ app.get("/",function (req,res) {
 
 app.post("/",function(req,res){
   const city = req.body.city;
-  const apiKey = `79911f7d3cfe66b869e6b2589f7eb307`; 
+  const apiKey = "79911f7d3cfe66b869e6b2589f7eb307"; 
   const units = "metric";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  const url = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid="+ apiKey +"&units="+ units;
+  console.log(url);
   https.get(url,function(response){
     
     response.on("data",function(data){
@@ -31,7 +32,7 @@ app.post("/",function(req,res){
       const lat = weatherData.coord.lat;
       
 
-      res.write(`<h1>${city}</h1><p>${mainWeather}.....${desc}......${temp}.....${windSpeed}</p>`)
+      res.write("<h1>"+ city +"</h1><p>"+ mainWeather+ "....."+ desc +"......"+ temp+ "....."+ windSpeed +"</p>")
       
     });
   });
